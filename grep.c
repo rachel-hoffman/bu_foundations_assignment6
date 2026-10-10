@@ -24,7 +24,8 @@ int main(int argc, char** argv) {
     // Checking given mode
     if(strcmp(mode, "count") == 0){
         // Count mode
-        printf("Count mode accessed. TBD!");
+        struct count_result result = search_instance(file, word);
+        printf("Found: %d of %s in %s\n", result.count, word, file);
     }
     else if(strcmp(mode, "instance") == 0){
         // Instance mode

@@ -35,7 +35,7 @@ int search_count(char *filename, char *target) {
 }
 
 // Returns the count and an array of string "instances" of the word. The string will be the string line where the word was found
-struct count_result search_instance(char *filename,char *target){
+struct count_result search_instance(char *filename, char *target){
     int count = search_count(filename, target);
     char line[2048] = "";
     // malloc space for the array of char pointers
@@ -58,10 +58,10 @@ struct count_result search_instance(char *filename,char *target){
         // Search for target word
         while((position = strstr(position, target)) != NULL){
             // We found an instance
-            // malloc space for the line
-            instances[i] = malloc(strlen(line) + 1); //+1 for null terminator
             // Remove the \n character (debugging for test 2)
             line[strcspn(line, "\n")] = '\0';
+            // malloc space for the line
+            instances[i] = malloc(strlen(line) + 1); //+1 for null terminator
             // Add this line to the instances array
             strcpy(instances[i], line);
             

@@ -10,9 +10,10 @@ int main(int argc, char** argv) {
     // You can expect argv[3] to be the target word
 
     if (argc != 4) {
-        printf(stderr,
-                "Usage: %s <count|instance> <input_file> <target_word>\n",
-                argv[0]);
+        fprintf(
+            stderr,
+            "Usage: %s <count|instance> <input_file> <target_word>\n",
+            argv[0]);
         return 1;
     }
 
@@ -24,8 +25,8 @@ int main(int argc, char** argv) {
     // Checking given mode
     if(strcmp(mode, "count") == 0){
         // Count mode
-        struct count_result result = search_instance(file, word);
-        printf("Found: %d of %s in %s\n", result.count, word, file);
+        int result = search_count(file, word);
+        printf("Found: %d of %s in %s\n", result, word, file);
     }
     else if(strcmp(mode, "instance") == 0){
         // Instance mode
@@ -42,6 +43,5 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    
     return 0;
 }

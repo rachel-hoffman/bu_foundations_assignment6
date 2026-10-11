@@ -6,19 +6,19 @@
 
 int test_count1() {
     int res = search_count("data/small.txt", "the");
-    
+    printf("the count: %d (expected 2)\n", res);
     if(res != 2) {
         return 0;
     }
 
     res = search_count("data/small.txt", "dog");
-
+    printf("dog count: %d (expected 1)\n", res);
     if(res != 1) {
         return 0;
     }
 
     res = search_count("data/small.txt", "doggy");
-
+    printf("doggy count: %d (expected 0)\n", res);
      if(res != 0) {
         return 0;
     }
@@ -27,17 +27,19 @@ int test_count1() {
 
 int test_count2() {
     int res = search_count("data/warnpeace.txt", "help");
+    printf("warnpeace count: %d (expected 207)\n", res);
     if(res != 207) {
         return 0;
     }
-
+    
     res = search_count("data/lesmis.txt", "the");
-
+    printf("lesmis count: %d (expected 48381)\n", res);
     if(res != 48381) {
         return 0;
     }
 
     res = search_count("data/odyssey.txt", "Telemachus");
+    printf("odyssey count: %d (expected 272)\n", res);
     if(res != 272) {
         return 0;
     }
@@ -46,7 +48,7 @@ int test_count2() {
 
 int test_instance1() {
     struct count_result res = search_instance("data/small.txt", "the");
-    
+    printf("small count: %d (expected 2)\n", res.count);
     if(res.count != 2) {
         return 0;
     }
@@ -64,17 +66,19 @@ int test_instance1() {
 
 int test_instance2() {
     struct count_result res = search_instance("data/warnpeace.txt", "help");
+    printf("warnpeace count: %d (expected 207)\n", res.count);
     if(res.count != 207) {
         return 0;
     }
 
     res = search_instance("data/lesmis.txt", "the");
-
+    printf("lesmis count: %d (expected 48381)\n", res.count);
     if(res.count != 48381) {
         return 0;
     }
 
     res = search_instance("data/odyssey.txt", "Telemachus");
+    printf("odyssey count: %d (expected 272)\n", res.count);
     if(res.count != 272) {
         return 0;
     }

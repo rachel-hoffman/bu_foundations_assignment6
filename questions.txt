@@ -1,0 +1,12 @@
+(1)
+Timing the grep instance on war and peace for the word "help" took 0.623 seconds. This is the 'real' time that was reported, but the user and system time is also reported. The user input is the time the CPU spent executing the program code, which was 0.013 seconds for this run. The system time is the time the CPU spent executing OS code, which was 0.006 seconds for this run.
+
+real    0m0.623s
+user    0m0.013s
+sys     0m0.006s
+
+(2)
+I did encounter a data race with my 'count' variable. I ended up avoiding this issue by creating a count variable in the struct, and keeping those values seperate for each thread. I did not combine them into a total count until after both threads were jopined and I was ready to return the final value. I implemented this strategy in both the count and instance functions, but the instance function really gave me a hard time. I was first trying to reuse the 'count' variable I got as the return value from the count function, but kept running into bugs. I ended up creating another variable 'total' and re-calculated the count by adding together the two threads' counts based on the instance run. I was passing the count variable to both my threads, and I believe somewhere the count variable was being over written and was no longer reliable. I found that it was easiest to use local variables as much as possible, becasue it made it easier to debug and see where I was encountering errors.
+
+(3)
+The OpenMP file differs from the pthread version mainly in the fact that the code is simpler. The pthread creation and joining is all automatic, plus I was able to set it up where I can change the number of threads each function uses just by changing one line. The rest is automatic, which is really nice especially as I want to run tests. It makes it especially easy to test how runtime is affected as the number of threads changes.
